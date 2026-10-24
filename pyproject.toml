@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "safecad"
+version = "0.1.0"
+description = "SafeCAD frozen-feature continual anomaly detection with QCM"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = ["numpy>=1.24", "Pillow>=9.5"]
+
+[project.optional-dependencies]
+vision = ["torch>=2.1", "torchvision>=0.16"]
+test = ["pytest>=7"]
+data = ["huggingface-hub>=0.24"]
+eval = ["scikit-learn>=1.3", "scipy>=1.10"]
+all = ["torch>=2.1", "torchvision>=0.16", "huggingface-hub>=0.24", "scikit-learn>=1.3", "scipy>=1.10", "pytest>=7"]
+
+[project.scripts]
+safecad = "safecad.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["safecad*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
